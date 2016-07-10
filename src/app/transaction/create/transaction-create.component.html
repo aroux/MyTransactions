@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" #createForm="ngForm">
+  <label for="amount">Amount</label>
+  <input id="amount" name="amount" type="text"
+         [(ngModel)]="transaction.amount"
+         required #amount="ngModel"
+  >
+  <div [hidden]="amount.valid || amount.pristine">
+    Name is required
+  </div>
+
+  <label for="type">Type</label>
+  <select id="type" name="type"
+          [(ngModel)]="transaction.type"
+          required #type="ngModel"
+  >
+    <option *ngFor="let transactionType of getTransactionsTypes()" [value]="transactionType">{{transactionType}}</option>
+  </select>
+  <div [hidden]="type.valid || type.pristine">
+    Type is required
+  </div>
+
+  <button type="submit"
+          [disabled]="!createForm.form.valid"
+  >Add</button>
+</form>

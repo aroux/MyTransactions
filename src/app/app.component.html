@@ -1,3 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<h1>MyTransactions</h1>
+<nav>
+  <a [routerLink]="['/transaction-create']">Create</a>
+  <a [routerLink]="['/transaction-list']">List</a>
+</nav>
+<router-outlet></router-outlet>
